@@ -29,5 +29,5 @@ jobs:
             await octokit.actions.createWorkflowDispatch({
               owner: 'raivenhart',  # Replace with your organization name
               repo: 'new-demo',         # Replace with the name of Repository B
-              workflow_id: 'sync-template'  # Replace with the name of Workflow B
+              workflow_id: 'sync-template.yml'  # Replace with the name of Workflow B
             })
