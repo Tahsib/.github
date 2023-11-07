@@ -1,6 +1,7 @@
-name: Tmplts
+name: upload
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main  # Adjust this to your main branch name
