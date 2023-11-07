@@ -19,3 +19,15 @@ jobs:
           cp -r pr-templates/* $GITHUB_WORKSPACE
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Trigger Workflow B in Repository B
+        uses: actions/github-script@0.4.0
+        with:
+          github-token: ${{ secrets.PAT_TOKEN_B }}  # Personal Access Token for Repository B
+          script: |
+            const { owner, repo } = context.repo;
+            await octokit.actions.createWorkflowDispatch({
+              owner: 'raivenhart',  # Replace with your organization name
+              repo: 'new-demo',         # Replace with the name of Repository B
+              workflow_id: 'sync-template'  # Replace with the name of Workflow B
+            })
