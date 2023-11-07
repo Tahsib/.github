@@ -1,4 +1,4 @@
-name: Copy PR Templates
+name: cp-template
 
 on:
   push:
