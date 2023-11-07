@@ -18,7 +18,7 @@ jobs:
         run: |
           cp -r pr-templates/* $GITHUB_WORKSPACE
         env:
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN: "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"
       - name: Trigger Workflow B in Repository B
         uses: actions/github-script@0.4.0
         with:
