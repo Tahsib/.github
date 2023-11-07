@@ -1,0 +1,23 @@
+name: Copy PR Templates
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to your main branch name
+
+jobs:
+  copy-templates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Copy PR templates
+        run: |
+          cp -r pr-templates/* $GITHUB_WORKSPACE
+          git add -A
+          git commit -m "Copy PR templates"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
