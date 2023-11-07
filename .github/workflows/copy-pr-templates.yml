@@ -12,7 +12,12 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2
-
+      - name: Set Git user identity
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Copy PR templates
         run: |
           cp -r pr-templates/* $GITHUB_WORKSPACE
