@@ -23,7 +23,7 @@ jobs:
       - name: Trigger Workflow B in Repository B
         uses: actions/github-script@0.4.0
         with:
-          github-token: ${{ secrets.PAT_TOKEN_B }}  # Personal Access Token for Repository B
+          github-token: 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  # Personal Access Token for Repository B
           script: |
             const { owner, repo } = context.repo;
             await octokit.actions.createWorkflowDispatch({
