@@ -1,0 +1,23 @@
+name: Sync Template
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [upload]  # Name of the workflow in your PR templates repository
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run workflow from PR templates repository
+        run: |
+          cp -r $GITHUB_WORKSPACE/pr-templates/* .github/PULL_REQUEST_TEMPLATE
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
